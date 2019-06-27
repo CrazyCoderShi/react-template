@@ -1,0 +1,21 @@
+{
+  "extends": ["react-app", "plugin:react/recommended"],
+  "plugins": ["prettier", "react"],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "printWidth": 100,
+        "semi": false,
+        "jsxBracketSameLine": false
+      }
+    ],
+    "react/self-closing-comp": 1,
+    "react/jsx-boolean-value": 1
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  }
+}
