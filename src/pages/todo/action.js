@@ -1,7 +1,10 @@
 let nextTodoId = 0
 
-export const addTodo = text => ({
-  type: "ADD_TODO",
-  id: nextTodoId++,
-  text
-})
+export const addTodo = text => {
+  console.log("---> action", text)
+  return {
+    type: "ADD_TODO",
+    id: "10086",
+    text
+  }
+}
