@@ -2,7 +2,6 @@ import React from "react"
 import logo from "./logo.svg"
 import "./App.css"
 import { PrimaryButton, ActionButton } from "office-ui-fabric-react/lib/Button"
-import { FluentCustomizations } from "@uifabric/fluent-theme"
 
 function App() {
   return (
