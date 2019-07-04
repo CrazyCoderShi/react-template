@@ -1,9 +1,10 @@
 import React from "react"
 import { render } from "react-dom"
 import { Provider } from "react-redux"
+import { BrowserRouter } from "react-router-dom"
 
-import App from "./App"
-import configureStore from "./configureStore"
+import HomePage from "./pages/home/index"
+import configureStore from "./config/configureStore"
 import * as serviceWorker from "./serviceWorker"
 
 const store = configureStore()
@@ -11,13 +12,15 @@ const store = configureStore()
 const renderApp = () =>
   render(
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <HomePage />
+      </BrowserRouter>
     </Provider>,
     document.getElementById("root")
   )
 
 if (process.env.NODE_ENV !== "production" && module.hot) {
-  module.hot.accept("./App", renderApp)
+  module.hot.accept("./pages/home/", renderApp)
 }
 
 renderApp()
