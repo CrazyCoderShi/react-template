@@ -1,18 +1,23 @@
 import React from "react"
 import { render } from "react-dom"
 import { Provider } from "react-redux"
+import { initializeIcons } from "office-ui-fabric-react/lib/Icons"
 import { BrowserRouter } from "react-router-dom"
+import { createBrowserHistory } from "history"
 
 import HomePage from "./pages/home/index"
 import configureStore from "./config/configureStore"
 import * as serviceWorker from "./serviceWorker"
 
+initializeIcons()
+
 const store = configureStore()
+const history = createBrowserHistory()
 
 const renderApp = () =>
   render(
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter history={history}>
         <HomePage />
       </BrowserRouter>
     </Provider>,

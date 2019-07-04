@@ -1,6 +1,37 @@
 @import '../../config/normalize.css';
+@import '../../common/styles/index';
+
+#root {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+}
 
 .rt-app-container {
-  // background-color: red;
-  margin: 5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 0;
+
+  .header {
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid $PrimaryColor;
+  }
+
+  .menu-content {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+
+    .root-40 {
+      border: none !important;
+    }
+
+    .content {
+      flex: 1;
+    }
+  }
 }

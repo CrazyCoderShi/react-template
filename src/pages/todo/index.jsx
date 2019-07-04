@@ -5,7 +5,7 @@ class TodoList extends Component {
   render() {
     return (
       <div>
-        <Button primary title="添加" />
+        <Button primary text="添加" />
       </div>
     )
   }
