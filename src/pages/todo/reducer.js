@@ -1,6 +1,4 @@
 const todos = (state = [], action) => {
-  console.log("---> reducer", action)
-
   switch (action.type) {
     case "ADD_TODO":
       return [

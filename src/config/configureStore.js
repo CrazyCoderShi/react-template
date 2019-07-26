@@ -1,12 +1,18 @@
 import { applyMiddleware, createStore } from "redux"
 import thunkMiddleware from "redux-thunk"
 import { composeWithDevTools } from "redux-devtools-extension"
+import { routerMiddleware } from "connected-react-router"
+import { createBrowserHistory } from "history"
 
 import monitorReducersEnhancer from "../enhancers/monitorReducers"
-import rootReducer from "../reducers"
+import createRootReducer from "../reducers"
 
 export default function configureStore(preloadedState) {
-  const middlewares = [thunkMiddleware]
+  const history = createBrowserHistory()
+  const rootReducer = createRootReducer(history)
+  const router = routerMiddleware(history)
+
+  const middlewares = [thunkMiddleware, router]
   const middlewareEnhancer = applyMiddleware(...middlewares)
 
   const enhancers = [middlewareEnhancer, monitorReducersEnhancer]

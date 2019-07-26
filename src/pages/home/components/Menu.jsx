@@ -3,9 +3,21 @@ import { Nav, Icon } from "office-ui-fabric-react/lib"
 import PropTypes from "prop-types"
 import { Link } from "react-router-dom"
 
+import "./Menu.scss"
+
 class HomeMenu extends Component {
   static propTypes = {
     itemClick: PropTypes.func
+  }
+
+  state = {
+    selectedKey: "/page1"
+  }
+
+  onItemClickAction = link => () => {
+    console.log(link)
+    this.setState({ selectedKey: link.href })
+    // this.props.itemClick()
   }
 
   /// link render
@@ -15,6 +27,7 @@ class HomeMenu extends Component {
         className={props.className}
         style={{ color: "inherit", boxSizing: "border-box" }}
         to={props.href}
+        onClick={this.onItemClickAction(props)}
       >
         <span style={{ display: "flex" }}>
           {!!props.iconProps && <Icon style={{ margin: "0 4px" }} {...props.iconProps} />}
@@ -26,23 +39,14 @@ class HomeMenu extends Component {
 
   render() {
     return (
-      <div>
+      <div className="rt-menu-contianer">
         <Nav
           linkAs={this.onRenderLink}
-          onLinkClick={this.props.itemClick}
+          onLinkClick={this.onItemClickAction}
           expandedStateText="expanded"
           collapsedStateText="collapsed"
-          selectedKey="key4"
+          selectedKey={this.state.selectedKey}
           expandButtonAriaLabel="Expand or collapse"
-          styles={{
-            root: {
-              width: 208,
-              height: 350,
-              boxSizing: "border-box",
-              border: "1px solid #eee",
-              overflowY: "auto"
-            }
-          }}
           groups={[
             {
               links: [
@@ -52,12 +56,13 @@ class HomeMenu extends Component {
                     {
                       name: "页面1",
                       url: "/page1",
-                      key: "key1"
+                      key: "/page1",
+                      icon: "News"
                     },
                     {
                       name: "页面2",
                       url: "/page2",
-                      key: "key2",
+                      key: "/page2",
                       icon: "News"
                     }
                   ],

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { Component } from "react"
 import { Route, Switch } from "react-router-dom"
 
@@ -8,7 +9,7 @@ import TodoPage from "../todo/index"
 
 class HomePage extends Component {
   componentDidMount() {
-    console.log(this.props)
+    console.log("---> props", this.props)
   }
 
   onMenuItemClick = (e, value) => {
@@ -22,11 +23,11 @@ class HomePage extends Component {
           <HomeHeader />
         </div>
         <div className="menu-content">
-          <HomeMenu itemClick={this.onMenuItemClick} />
+          <HomeMenu itemClick={this.onMenuItemClick} history={this.props.history} />
           <div className="content">
             <Switch>
               <Route path="/page1" component={TodoPage} />
-              <Route path="/page2" component={() => <div>222</div>} />
+              <Route path="/page2" component={() => <div>page2</div>} />
               <Route exact path="/" component={TodoPage} />
             </Switch>
           </div>

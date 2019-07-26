@@ -2,7 +2,7 @@ import React from "react"
 import { render } from "react-dom"
 import { Provider } from "react-redux"
 import { initializeIcons } from "office-ui-fabric-react/lib/Icons"
-import { BrowserRouter } from "react-router-dom"
+import { ConnectedRouter } from "connected-react-router"
 import { createBrowserHistory } from "history"
 
 import HomePage from "./pages/home/index"
@@ -17,9 +17,9 @@ const history = createBrowserHistory()
 const renderApp = () =>
   render(
     <Provider store={store}>
-      <BrowserRouter history={history}>
-        <HomePage />
-      </BrowserRouter>
+      <ConnectedRouter history={history}>
+        <HomePage history={history} />
+      </ConnectedRouter>
     </Provider>,
     document.getElementById("root")
   )
