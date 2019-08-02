@@ -1,3 +1,7 @@
+@import '../../../common/styles/color.scss';
+
 .rt-menu-contianer {
-  margin: 0 10px;
+  height: 100%;
+  padding: 0 10px;
+  border-right: 1px solid $PrimaryColor;
 }

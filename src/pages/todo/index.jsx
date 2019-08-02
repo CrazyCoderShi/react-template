@@ -3,9 +3,11 @@ import { PrimaryButton } from "office-ui-fabric-react/lib/Button"
 
 class TodoList extends Component {
   onClickAction = () => {
-    this.props.history.push("/page2")
+    // this.props.history.push("/page2")
   }
-  componentDidMount() {}
+  componentDidMount() {
+    // console.log(this.props)
+  }
 
   render() {
     return (

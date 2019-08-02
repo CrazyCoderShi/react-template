@@ -2,20 +2,26 @@ import React, { Component } from "react"
 import { Nav, Icon } from "office-ui-fabric-react/lib"
 import PropTypes from "prop-types"
 import { Link } from "react-router-dom"
-
 import "./Menu.scss"
 
 class HomeMenu extends Component {
   static propTypes = {
-    itemClick: PropTypes.func
+    itemClick: PropTypes.func,
+    history: PropTypes.object
   }
 
   state = {
     selectedKey: "/page1"
   }
 
+  componentDidMount() {
+    this.props.history.listen((location, action) => {
+      console.log(location)
+      this.setState({ selectedKey: location.pathname })
+    })
+  }
+
   onItemClickAction = link => () => {
-    console.log(link)
     this.setState({ selectedKey: link.href })
     // this.props.itemClick()
   }
@@ -26,7 +32,7 @@ class HomeMenu extends Component {
       <Link
         className={props.className}
         style={{ color: "inherit", boxSizing: "border-box" }}
-        to={props.href}
+        to={props.href || ""}
         onClick={this.onItemClickAction(props)}
       >
         <span style={{ display: "flex" }}>
@@ -45,7 +51,7 @@ class HomeMenu extends Component {
           onLinkClick={this.onItemClickAction}
           expandedStateText="expanded"
           collapsedStateText="collapsed"
-          selectedKey={this.state.selectedKey}
+          selectedKey={this.props.history.location.pathname}
           expandButtonAriaLabel="Expand or collapse"
           groups={[
             {

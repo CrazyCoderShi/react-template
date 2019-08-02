@@ -8,14 +8,6 @@ import "./style.scss"
 import TodoPage from "../todo/index"
 
 class HomePage extends Component {
-  componentDidMount() {
-    console.log("---> props", this.props)
-  }
-
-  onMenuItemClick = (e, value) => {
-    console.log("------>", value)
-  }
-
   render() {
     return (
       <div className="rt-app-container">
@@ -23,7 +15,7 @@ class HomePage extends Component {
           <HomeHeader />
         </div>
         <div className="menu-content">
-          <HomeMenu itemClick={this.onMenuItemClick} history={this.props.history} />
+          <HomeMenu history={this.props.history} />
           <div className="content">
             <Switch>
               <Route path="/page1" component={TodoPage} />
